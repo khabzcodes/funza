@@ -1,8 +1,8 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const emailOtpAuthSchema = z.object({
   email: z.string().email({
-    message: "Invalid email address.",
+    message: 'Invalid email address.',
   }),
 });
 

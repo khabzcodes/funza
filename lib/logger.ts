@@ -1,10 +1,10 @@
-import chalk from "chalk";
+import chalk from 'chalk';
 
 export enum LogLevel {
-  DEBUG = "DEBUG",
-  INFO = "INFO",
-  WARN = "WARN",
-  ERROR = "ERROR",
+  DEBUG = 'DEBUG',
+  INFO = 'INFO',
+  WARN = 'WARN',
+  ERROR = 'ERROR',
 }
 const LOG_CONFIG = {
   development: {
@@ -25,7 +25,7 @@ const LOG_CONFIG = {
 };
 
 // Get current environment
-const ENV = (process.env.NODE_ENV as keyof typeof LOG_CONFIG) || "development";
+const ENV = (process.env.NODE_ENV as keyof typeof LOG_CONFIG) || 'development';
 const config = LOG_CONFIG[ENV] || LOG_CONFIG.development;
 
 const formatObject = (obj: any): string => {
@@ -34,16 +34,16 @@ const formatObject = (obj: any): string => {
       return JSON.stringify(
         {
           message: obj.message,
-          stack: ENV === "development" ? obj.stack : undefined,
+          stack: ENV === 'development' ? obj.stack : undefined,
           ...(obj as any),
         },
         null,
-        ENV === "development" ? 2 : 0
+        ENV === 'development' ? 2 : 0
       );
     }
-    return JSON.stringify(obj, null, ENV === "development" ? 2 : 0);
+    return JSON.stringify(obj, null, ENV === 'development' ? 2 : 0);
   } catch (error) {
-    return "[Circular or Non-Serializable Object]";
+    return '[Circular or Non-Serializable Object]';
   }
 };
 
@@ -57,12 +57,7 @@ export class Logger {
   private shouldLog(level: LogLevel): boolean {
     if (!config.enabled) return false;
 
-    const levels = [
-      LogLevel.DEBUG,
-      LogLevel.INFO,
-      LogLevel.WARN,
-      LogLevel.ERROR,
-    ];
+    const levels = [LogLevel.DEBUG, LogLevel.INFO, LogLevel.WARN, LogLevel.ERROR];
     const minLevelIndex = levels.indexOf(config.minLevel);
     const currentLevelIndex = levels.indexOf(level);
 
@@ -70,9 +65,9 @@ export class Logger {
   }
 
   private formatArgs(args: any[]): any[] {
-    return args.map((arg) => {
+    return args.map(arg => {
       if (arg === null || arg === undefined) return arg;
-      if (typeof arg === "object") return formatObject(arg);
+      if (typeof arg === 'object') return formatObject(arg);
       return arg;
     });
   }
