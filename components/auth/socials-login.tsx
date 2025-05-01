@@ -12,7 +12,6 @@ const logger = createLogger('SocialsLogin');
 
 export const SocialsLogin = ({ className, ...props }: React.ComponentPropsWithRef<'div'>) => {
   const [isLoadingGoogle, setIsLoadingGoogle] = React.useState<boolean>(false);
-  const [isLoadingGithub, setIsLoadingGithub] = React.useState<boolean>(false);
 
   const handleGoogleLogin = async () => {
     setIsLoadingGoogle(true);
@@ -33,24 +32,6 @@ export const SocialsLogin = ({ className, ...props }: React.ComponentPropsWithRe
     }
   };
 
-  const handleGithubLogin = async () => {
-    setIsLoadingGithub(true);
-    try {
-      await signIn.social({ provider: 'github' });
-    } catch (error) {
-      setIsLoadingGithub(false);
-      logger.error('Github login error', { error });
-      const errorMessage =
-        error instanceof Error
-          ? error.message
-            ? error instanceof BetterAuthError
-              ? error.message
-              : 'Unknown error'
-            : 'Unknown error'
-          : 'Unknown error';
-      toast.error(errorMessage);
-    }
-  };
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
       <Button variant="outline" disabled={isLoadingGoogle} onClick={handleGoogleLogin}>
@@ -58,16 +39,6 @@ export const SocialsLogin = ({ className, ...props }: React.ComponentPropsWithRe
           <>
             <Icons.google className="mr-2 h-4 w-4" />
             Continue with Google
-          </>
-        ) : (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-        )}
-      </Button>
-      <Button variant="outline" disabled={isLoadingGithub} onClick={handleGithubLogin}>
-        {!isLoadingGithub ? (
-          <>
-            <Icons.github className="mr-2 h-4 w-4" />
-            Continue with Github
           </>
         ) : (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />

@@ -17,9 +17,9 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Icons } from '@/components/icons';
 import { signOut } from '@/lib/auth-client';
 import React from 'react';
-import { redirect } from 'next/navigation';
 import { logger } from 'better-auth';
 import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 type UserNavProps = {
   user: {
@@ -31,13 +31,19 @@ type UserNavProps = {
 
 export const UserNav = ({ user }: UserNavProps) => {
   const { isMobile } = useSidebar();
+  const router = useRouter();
   const [isLoggingOut, setIsLoggingOut] = React.useState<boolean>(false);
 
   const handleLogout = async () => {
     setIsLoggingOut(true);
     try {
-      await signOut();
-      redirect('/login');
+      await signOut({
+        fetchOptions: {
+          onSuccess: () => {
+            router.push('/login');
+          },
+        },
+      });
     } catch (error) {
       if (error instanceof Error) {
         logger.error(`Error logging out: ${error.message}`);

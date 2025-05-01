@@ -13,6 +13,12 @@ export default function RegisterPage() {
           Better Next
         </Link>
         <RegisterForm />
+        <p className="text-sm text-muted-foreground text-center">
+          Already have an account?{' '}
+          <Link href="/login" className="text-primary underline underline-offset-4">
+            Sign in
+          </Link>
+        </p>
       </div>
     </div>
   );

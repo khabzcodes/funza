@@ -1,8 +1,11 @@
 import { z } from 'zod';
 
-export const emailOtpAuthSchema = z.object({
+export const emailAuthSchema = z.object({
   email: z.string().email({
     message: 'Invalid email address.',
+  }),
+  password: z.string({
+    message: 'Password is required.',
   }),
 });
 
@@ -35,5 +38,5 @@ export const registerSchema = z.object({
     ),
 });
 
-export type EmailOtpAuthInput = z.infer<typeof emailOtpAuthSchema>;
+export type EmailAuthInput = z.infer<typeof emailAuthSchema>;
 export type RegisterInput = z.infer<typeof registerSchema>;

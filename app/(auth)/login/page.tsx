@@ -27,6 +27,12 @@ const LoginPage = () => {
               </div>
             </div>
             <SocialsLogin className="mt-3" />
+            <p className="text-sm text-muted-foreground text-center mt-3">
+              Don&apos;t have an account?{' '}
+              <Link href="/register" className="text-primary underline underline-offset-4">
+                Create an account
+              </Link>
+            </p>
           </div>
         </div>
       </div>
