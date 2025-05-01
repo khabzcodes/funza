@@ -15,10 +15,16 @@ export const dashboardConfiguration: DashboardConfiguration = {
       visibleTo: ['educator'],
     },
     {
+      title: 'Students',
+      href: '/dashboard/students',
+      icon: 'users',
+      visibleTo: ['educator'],
+    },
+    {
       title: 'Assessments',
       href: '/dashboard/assessments',
       icon: 'clipboard',
       visibleTo: ['learner', 'educator'],
-    }
+    },
   ],
 };

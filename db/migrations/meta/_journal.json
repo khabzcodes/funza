@@ -15,6 +15,13 @@
       "when": 1746123674929,
       "tag": "0001_goofy_senator_kelly",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1746139443389,
+      "tag": "0002_naive_boomerang",
+      "breakpoints": true
     }
   ]
 }

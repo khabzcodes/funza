@@ -10,7 +10,7 @@ export default function RegisterPage() {
           <div className="flex h-6 w-6 items-center justify-center rounded-xl bg-primary text-primary-foreground">
             <Icons.logo className="size-4" />
           </div>
-          Better Next
+          <span className="text-base font-semibold">Funza</span>
         </Link>
         <RegisterForm />
         <p className="text-sm text-muted-foreground text-center">

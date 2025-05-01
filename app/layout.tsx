@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { Readex_Pro } from 'next/font/google';
+import { Space_Mono } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/sonner';
 
-const readex = Readex_Pro({
-  subsets: ['latin'],
+const readex = Space_Mono({
+  weight: ['400', '700'],
 });
 
 export const metadata: Metadata = {

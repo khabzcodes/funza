@@ -12,7 +12,7 @@ const LoginPage = () => {
             <div className="flex h-6 w-6 items-center justify-center rounded-xl bg-primary text-primary-foreground">
               <Icons.logo className="size-4" />
             </div>
-            Better Next
+            <span className="text-base font-semibold">Funza</span>
           </Link>
         </div>
         <div className="flex flex-1 items-center justify-center">
