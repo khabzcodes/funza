@@ -14,6 +14,7 @@ export type SidebarNavItem = {
   disabled?: boolean;
   external?: boolean;
   icon?: keyof typeof Icons;
+  visibleTo?: string[];
 };
 
 export type DashboardConfiguration = {

@@ -17,7 +17,26 @@ import { useSession } from '@/lib/auth-client';
 import { UserNav } from '@/components/app-navigation/user-nav';
 
 export const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
-  const { data, isPending, error } = useSession();
+  const { data, isPending } = useSession();
+
+  if (isPending || !data?.user) {
+    return (
+      <div className="flex h-full w-full items-center justify-center">
+        <Icons.spinner className="size-4 animate-spin text-primary" />
+      </div>
+    );
+  }
+  const roleBasedNav = dashboardConfiguration.mainNav.filter(item => {
+    if (data.user.role === 'learner') {
+      return item.visibleTo?.includes('learner');
+    } else if (data.user.role === 'educator') {
+      return item.visibleTo?.includes('educator');
+    } else if (data.user.role === 'parent') {
+      return item.visibleTo?.includes('parent');
+    }
+    return false;
+  });
+
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -28,14 +47,14 @@ export const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) =
                 <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
                   <Icons.logo className="size-4" />
                 </div>
-                <span className="text-base font-semibold">Better-Next</span>
+                <span className="text-base font-semibold">Funza</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <MainNav items={dashboardConfiguration.mainNav} />
+        <MainNav items={roleBasedNav} />
       </SidebarContent>
       <SidebarFooter>
         {!isPending && (
