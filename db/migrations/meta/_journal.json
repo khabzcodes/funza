@@ -8,6 +8,13 @@
       "when": 1745014548161,
       "tag": "0000_aberrant_power_pack",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1746123674929,
+      "tag": "0001_goofy_senator_kelly",
+      "breakpoints": true
     }
   ]
 }

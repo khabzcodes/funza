@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Readex_Pro } from 'next/font/google';
 import './globals.css';
+import { Toaster } from '@/components/ui/sonner';
 
 const readex = Readex_Pro({
   subsets: ['latin'],
@@ -18,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${readex.className} antialiased`}>{children}</body>
+      <body className={`${readex.className} antialiased`}>
+        {children} <Toaster richColors={true} position="top-right" />
+      </body>
     </html>
   );
 }
