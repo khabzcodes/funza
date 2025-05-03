@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { ColumnDef } from '@tanstack/react-table';
 import { LessonTableData } from '@/types/lesson';
+import { redirect } from 'next/navigation';
 
 export const columns: ColumnDef<LessonTableData>[] = [
   {
@@ -10,7 +11,15 @@ export const columns: ColumnDef<LessonTableData>[] = [
     header: () => <div className="text-left font-bold">Subject</div>,
     cell: ({ row }) => {
       const subject = row.original.subject;
-      return <div className="text-left font-medium capitalize">{subject}</div>;
+      const lessonId = row.original.id;
+      return (
+        <div
+          className="text-left font-medium capitalize cursor-pointer"
+          onClick={() => redirect(`/dashboard/lessons/${lessonId}`)}
+        >
+          {subject}
+        </div>
+      );
     },
   },
   {
