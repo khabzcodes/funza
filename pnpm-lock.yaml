@@ -11,6 +11,9 @@ importers:
       '@ai-sdk/openai':
         specifier: ^1.3.21
         version: 1.3.21(zod@3.24.3)
+      '@electric-sql/pglite':
+        specifier: ^0.3.0
+        version: 0.3.0
       '@hono/zod-validator':
         specifier: ^0.5.0
         version: 0.5.0(hono@4.7.8)(zod@3.24.3)
@@ -29,6 +32,12 @@ importers:
       '@mastra/memory':
         specifier: ^0.3.1
         version: 0.3.1(@hono/zod-validator@0.5.0(hono@4.7.8)(zod@3.24.3))(openapi-types@12.1.3)(react@19.1.0)
+      '@mastra/pg':
+        specifier: ^0.3.1
+        version: 0.3.1(@hono/zod-validator@0.5.0(hono@4.7.8)(zod@3.24.3))(openapi-types@12.1.3)(pg-query-stream@4.8.1(pg@8.14.1))(react@19.1.0)(zod@3.24.3)
+      '@mastra/rag':
+        specifier: ^0.1.20
+        version: 0.1.20(@hono/zod-validator@0.5.0(hono@4.7.8)(zod@3.24.3))(ai@4.3.13(react@19.1.0)(zod@3.24.3))(openapi-types@12.1.3)(react@19.1.0)
       '@mastra/voice-openai-realtime':
         specifier: ^0.2.1
         version: 0.2.1(@hono/zod-validator@0.5.0(hono@4.7.8)(zod@3.24.3))(openapi-types@12.1.3)(react@19.1.0)(zod@3.24.3)
@@ -113,6 +122,9 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.75.1
         version: 5.75.1(react@19.1.0)
+      ai:
+        specifier: 4.3.13
+        version: 4.3.13(react@19.1.0)(zod@3.24.3)
       better-auth:
         specifier: ^1.2.7
         version: 1.2.7
@@ -191,6 +203,9 @@ importers:
       tesseract.js:
         specifier: ^6.0.1
         version: 6.0.1
+      tsx:
+        specifier: ^4.19.4
+        version: 4.19.4
       tw-animate-css:
         specifier: ^1.2.5
         version: 1.2.5
@@ -224,7 +239,7 @@ importers:
         version: 19.1.2(@types/react@19.1.2)
       drizzle-orm:
         specifier: ^0.42.0
-        version: 0.42.0(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/pg@8.6.1)(kysely@0.27.6)(pg@8.14.1)(postgres@3.4.5)
+        version: 0.42.0(@electric-sql/pglite@0.3.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/pg@8.6.1)(kysely@0.27.6)(pg@8.14.1)(postgres@3.4.5)
       eslint:
         specifier: ^9
         version: 9.25.0(jiti@2.4.2)
@@ -559,6 +574,9 @@ packages:
 
   '@drizzle-team/brocli@0.10.2':
     resolution: {integrity: sha512-z33Il7l5dKjUgGULTqBsQBQwckHh5AbIuxhdsIxDDiZAzBOrZO6q9ogcWC65kU382AfynTfgNumVcNIjuIua6w==}
+
+  '@electric-sql/pglite@0.3.0':
+    resolution: {integrity: sha512-ou1PA24kStSNpQVGdzDg1FGRzO7AQ3O6OX5FryupMdHkSfSswG2ZVXjCzzJKK88KLk+Q4QinKjZIUtmMeec5rg==}
 
   '@emnapi/core@1.4.3':
     resolution: {integrity: sha512-4m62DuCE07lw01soJwPiBGC0nAww0Q+RY70VZ+n49yDIO13yyinhbWCeNnaob0lakDtWQzSdtNWzJeOJt2ma+g==}
@@ -1614,6 +1632,14 @@ packages:
   '@mastra/memory@0.3.1':
     resolution: {integrity: sha512-f56IsfUvGTFEYxjMAVSvTui77O8ZljAIkRBwTlq9McRd9kk7EInz+ZV0jCiEhBW1QCV/xPhC1q8qyo646RjOzw==}
 
+  '@mastra/pg@0.3.1':
+    resolution: {integrity: sha512-UxmMDYNC8TXbYuRpf7jm5RTRqDYJD2KQVD/a/9IfeRW3b6eB0iWaiCTS/KDzBm6YOU6PKi0NJYzoAD5efC9i8g==}
+
+  '@mastra/rag@0.1.20':
+    resolution: {integrity: sha512-6KRIhDQeiKCuCoSnhup7KhNbjMJvDdzAXmbVMR4Ktvq6RQa+pNfFTEPLXbscqN7BRYeqYcpOkNWN3L7jJV1ktQ==}
+    peerDependencies:
+      ai: ^4.0.0
+
   '@mastra/server@2.0.1':
     resolution: {integrity: sha512-Iiccd/fncA0eIpcw9+xd+6gP0Y6yJxVMFaUPABbCuR2WDOasEBr4FKsh4Qi1wT2nX87KBfx7ry25sNY5aoCzmQ==}
     peerDependencies:
@@ -2159,6 +2185,9 @@ packages:
     engines: {node: '>=14'}
     peerDependencies:
       '@opentelemetry/api': ^1.1.0
+
+  '@paralleldrive/cuid2@2.2.2':
+    resolution: {integrity: sha512-ZOBkgDwEdoYVlSeRbYYXs0S9MejQofiVYoTbKzy/6GQa39/q5tQU2IX46+shYnUkpEl3wc+J6wRlar7r2EK2xA==}
 
   '@peculiar/asn1-android@2.3.16':
     resolution: {integrity: sha512-a1viIv3bIahXNssrOIkXZIlI2ePpZaNmR30d4aBL99mu2rO+mT9D6zBsp7H6eROWGtmwv0Ionp5olJurIo09dw==}
@@ -3730,12 +3759,19 @@ packages:
     resolution: {integrity: sha512-UOCGPYbl0tv8+006qks/dTgV9ajs97X2p0FAbyS2iyCRrmLSRolDaHdp+v/CLgnzHc3fVB+CwYiUmei7ndFcgA==}
     engines: {node: '>=12.0.0'}
 
+  assert-options@0.8.2:
+    resolution: {integrity: sha512-XaXoMxY0zuwAb0YuZjxIm8FeWvNq0aWNIbrzHhFjme8Smxw4JlPoyrAKQ6808k5UvQdhvnWqHZCphq5mXd4TDA==}
+    engines: {node: '>=10.0.0'}
+
   ast-types-flow@0.0.8:
     resolution: {integrity: sha512-OH/2E5Fg20h2aPrbe+QL8JZQFko0YZaF+j4mnQ7BGhfavO7OpSLa8a0y9sBwomHdSbkhTS8TQNayBfnW5DwbvQ==}
 
   async-function@1.0.0:
     resolution: {integrity: sha512-hsU18Ae8CDTR6Kgu9DYf0EbCr/a5iGL0rytQDobUcdpYOKokk8LEjVphnXkDkgpi0wYVsqrXuP0bZxJaTqdgoA==}
     engines: {node: '>= 0.4'}
+
+  async-mutex@0.5.0:
+    resolution: {integrity: sha512-1A94B18jkJ3DYq284ohPxoXbfTA5HsQ7/Mf4DEhcyLx3Bz27Rh59iScbB6EPiP+B+joue6YCxcMXSbFC1tZKwA==}
 
   async@2.6.4:
     resolution: {integrity: sha512-mzo5dfJYwAn29PeiJ0zvwTo04zj8HDJj0Mn8TD7sno7q12prdbnasKJHhkm2c1LgrhlJ0teaea8860oxi51mGA==}
@@ -4633,6 +4669,11 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
 
+  fsevents@2.3.3:
+    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
 
@@ -4808,6 +4849,9 @@ packages:
   hono@4.7.8:
     resolution: {integrity: sha512-PCibtFdxa7/Ldud9yddl1G81GjYaeMYYTq4ywSaNsYbB1Lug4mwtOMJf2WXykL0pntYwmpRJeOI3NmoDgD+Jxw==}
     engines: {node: '>=16.9.0'}
+
+  html-entities@2.6.0:
+    resolution: {integrity: sha512-kig+rMn/QOVRvr7c86gQ8lWXq+Hkv6CbAH1hLu+RG338StTpE8Z0b44SDVaqVu7HGKf27frdmUYEs9hTUX/cLQ==}
 
   html-void-elements@3.0.0:
     resolution: {integrity: sha512-bEqo66MRXsUGxWHV5IP0PUiAWwoEjba4VCzg0LjFJBpchPaTfyfCKTG6bc5F8ucKec3q5y6qOdGyYTSBEvhCrg==}
@@ -5492,6 +5536,9 @@ packages:
     resolution: {integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
+  node-html-better-parser@1.4.11:
+    resolution: {integrity: sha512-rXYKBD30q6Iw/Y8o2ueJILB29Z3RrqQQN/U2PDg4Iz2TSZP/KmqdcGp+pl8o5uYZlvIKh+A4UfOK98pKIb3cRw==}
+
   node-releases@2.0.19:
     resolution: {integrity: sha512-xxOWJsBKtzAq7DY0J+DTzuz58K8e7sJbdgwkbMWQe8UYB6ekmsQ45q0M/tJDsGaZmbC+l7n57UV8Hl5tHxO9uw==}
 
@@ -5646,17 +5693,37 @@ packages:
   pg-connection-string@2.7.0:
     resolution: {integrity: sha512-PI2W9mv53rXJQEOb8xNR8lH7Hr+EKa6oJa38zsK0S/ky2er16ios1wLKhZyxzD7jUReiWokc9WK5nxSnC7W1TA==}
 
+  pg-cursor@2.14.6:
+    resolution: {integrity: sha512-PColx8rSw5kINWDZTj/bg5I4ABh1I/5KsnW9oYw+OYwvEd5G0u67mkvAQo1RziH2pAFjFaPZXNu9FWah9WPneA==}
+    peerDependencies:
+      pg: ^8
+
   pg-int8@1.0.1:
     resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
     engines: {node: '>=4.0.0'}
+
+  pg-minify@1.7.0:
+    resolution: {integrity: sha512-kFPxAWAhPMvOqnY7klP3scdU5R7bxpAYOm8vGExuIkcSIwuFkZYl4C4XIPQ8DtXY2NzVmAX1aFHpvFSXQ/qQmA==}
+    engines: {node: '>=14.0.0'}
 
   pg-pool@3.8.0:
     resolution: {integrity: sha512-VBw3jiVm6ZOdLBTIcXLNdSotb6Iy3uOCwDGFAksZCXmi10nyRvnP2v3jl4d+IsLYRyXf6o9hIm/ZtUzlByNUdw==}
     peerDependencies:
       pg: '>=8.0'
 
+  pg-promise@11.13.0:
+    resolution: {integrity: sha512-NWCsh1gnELfYRF5hNhfXPcSxuCk9C3FyM9MhmGkVTmepczAC2aXuBkyXhipVlHzp0V/IVzyCZOrlH48Ma3i7YQ==}
+    engines: {node: '>=14.0'}
+    peerDependencies:
+      pg-query-stream: 4.8.1
+
   pg-protocol@1.8.0:
     resolution: {integrity: sha512-jvuYlEkL03NRvOoyoRktBK7+qU5kOvlAwvmrH8sr3wbLrOdVWsRxQfz8mMy9sZFsqJ1hEWNfdWKI4SAmoL+j7g==}
+
+  pg-query-stream@4.8.1:
+    resolution: {integrity: sha512-kZo6C6HSzYFF6mlwl+etDk5QZD9CMdlHUXpof6PkK9+CHHaBLvOd2lZMwErOOpC/ldg4thrAojS8sG1B8PZ9Yw==}
+    peerDependencies:
+      pg: ^8
 
   pg-types@2.2.0:
     resolution: {integrity: sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==}
@@ -6165,6 +6232,10 @@ packages:
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
 
+  spex@3.4.0:
+    resolution: {integrity: sha512-8JeZJ7QlEBnSj1W1fKXgbB2KUPA8k4BxFMf6lZX/c1ZagU/1b9uZWZK0yD6yjfzqAIuTNG4YlRmtMpQiXuohsg==}
+    engines: {node: '>=14.0.0'}
+
   split2@4.2.0:
     resolution: {integrity: sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg==}
     engines: {node: '>= 10.x'}
@@ -6341,6 +6412,11 @@ packages:
 
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
+
+  tsx@4.19.4:
+    resolution: {integrity: sha512-gK5GVzDkJK1SI1zwHf32Mqxf2tSJkNx+eYcNly5+nHvWqXUJYUkWBQtKauoESz3ymezAI++ZwT855x5p5eop+Q==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
 
   tw-animate-css@1.2.5:
     resolution: {integrity: sha512-ABzjfgVo+fDbhRREGL4KQZUqqdPgvc5zVrLyeW9/6mVqvaDepXc7EvedA+pYmMnIOsUAQMwcWzNvom26J2qYvQ==}
@@ -7304,6 +7380,8 @@ snapshots:
 
   '@drizzle-team/brocli@0.10.2': {}
 
+  '@electric-sql/pglite@0.3.0': {}
+
   '@emnapi/core@1.4.3':
     dependencies:
       '@emnapi/wasi-threads': 1.0.2
@@ -8018,6 +8096,65 @@ snapshots:
       - encoding
       - openapi-types
       - pg-native
+      - react
+      - supports-color
+      - utf-8-validate
+      - valibot
+      - zod-openapi
+
+  '@mastra/pg@0.3.1(@hono/zod-validator@0.5.0(hono@4.7.8)(zod@3.24.3))(openapi-types@12.1.3)(pg-query-stream@4.8.1(pg@8.14.1))(react@19.1.0)(zod@3.24.3)':
+    dependencies:
+      '@mastra/core': 0.9.1(@hono/zod-validator@0.5.0(hono@4.7.8)(zod@3.24.3))(openapi-types@12.1.3)(react@19.1.0)(zod@3.24.3)
+      async-mutex: 0.5.0
+      pg: 8.14.1
+      pg-promise: 11.13.0(pg-query-stream@4.8.1(pg@8.14.1))
+      xxhash-wasm: 1.1.0
+    transitivePeerDependencies:
+      - '@hono/arktype-validator'
+      - '@hono/effect-validator'
+      - '@hono/typebox-validator'
+      - '@hono/valibot-validator'
+      - '@hono/zod-validator'
+      - '@sinclair/typebox'
+      - '@valibot/to-json-schema'
+      - arktype
+      - aws-crt
+      - bufferutil
+      - effect
+      - encoding
+      - openapi-types
+      - pg-native
+      - pg-query-stream
+      - react
+      - supports-color
+      - utf-8-validate
+      - valibot
+      - zod
+      - zod-openapi
+
+  '@mastra/rag@0.1.20(@hono/zod-validator@0.5.0(hono@4.7.8)(zod@3.24.3))(ai@4.3.13(react@19.1.0)(zod@3.24.3))(openapi-types@12.1.3)(react@19.1.0)':
+    dependencies:
+      '@mastra/core': 0.9.1(@hono/zod-validator@0.5.0(hono@4.7.8)(zod@3.24.3))(openapi-types@12.1.3)(react@19.1.0)(zod@3.24.3)
+      '@paralleldrive/cuid2': 2.2.2
+      ai: 4.3.13(react@19.1.0)(zod@3.24.3)
+      js-tiktoken: 1.0.20
+      node-html-better-parser: 1.4.11
+      pathe: 2.0.3
+      zod: 3.24.3
+    transitivePeerDependencies:
+      - '@hono/arktype-validator'
+      - '@hono/effect-validator'
+      - '@hono/typebox-validator'
+      - '@hono/valibot-validator'
+      - '@hono/zod-validator'
+      - '@sinclair/typebox'
+      - '@valibot/to-json-schema'
+      - arktype
+      - aws-crt
+      - bufferutil
+      - effect
+      - encoding
+      - openapi-types
       - react
       - supports-color
       - utf-8-validate
@@ -8785,6 +8922,10 @@ snapshots:
     dependencies:
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/core': 1.30.1(@opentelemetry/api@1.9.0)
+
+  '@paralleldrive/cuid2@2.2.2':
+    dependencies:
+      '@noble/hashes': 1.7.2
 
   '@peculiar/asn1-android@2.3.16':
     dependencies:
@@ -10489,9 +10630,15 @@ snapshots:
       pvutils: 1.1.3
       tslib: 2.8.1
 
+  assert-options@0.8.2: {}
+
   ast-types-flow@0.0.8: {}
 
   async-function@1.0.0: {}
+
+  async-mutex@0.5.0:
+    dependencies:
+      tslib: 2.8.1
 
   async@2.6.4:
     dependencies:
@@ -10888,8 +11035,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.42.0(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/pg@8.6.1)(kysely@0.27.6)(pg@8.14.1)(postgres@3.4.5):
+  drizzle-orm@0.42.0(@electric-sql/pglite@0.3.0)(@libsql/client@0.14.0)(@opentelemetry/api@1.9.0)(@types/pg@8.6.1)(kysely@0.27.6)(pg@8.14.1)(postgres@3.4.5):
     optionalDependencies:
+      '@electric-sql/pglite': 0.3.0
       '@libsql/client': 0.14.0
       '@opentelemetry/api': 1.9.0
       '@types/pg': 8.6.1
@@ -11477,6 +11625,9 @@ snapshots:
   fsevents@2.3.2:
     optional: true
 
+  fsevents@2.3.3:
+    optional: true
+
   function-bind@1.1.2: {}
 
   function.prototype.name@1.1.8:
@@ -11637,6 +11788,8 @@ snapshots:
       zod: 3.24.3
 
   hono@4.7.8: {}
+
+  html-entities@2.6.0: {}
 
   html-void-elements@3.0.0: {}
 
@@ -12318,6 +12471,10 @@ snapshots:
       fetch-blob: 3.2.0
       formdata-polyfill: 4.0.10
 
+  node-html-better-parser@1.4.11:
+    dependencies:
+      html-entities: 2.6.0
+
   node-releases@2.0.19: {}
 
   npm-run-path@6.0.0:
@@ -12487,13 +12644,34 @@ snapshots:
 
   pg-connection-string@2.7.0: {}
 
+  pg-cursor@2.14.6(pg@8.14.1):
+    dependencies:
+      pg: 8.14.1
+
   pg-int8@1.0.1: {}
+
+  pg-minify@1.7.0: {}
 
   pg-pool@3.8.0(pg@8.14.1):
     dependencies:
       pg: 8.14.1
 
+  pg-promise@11.13.0(pg-query-stream@4.8.1(pg@8.14.1)):
+    dependencies:
+      assert-options: 0.8.2
+      pg: 8.14.1
+      pg-minify: 1.7.0
+      pg-query-stream: 4.8.1(pg@8.14.1)
+      spex: 3.4.0
+    transitivePeerDependencies:
+      - pg-native
+
   pg-protocol@1.8.0: {}
+
+  pg-query-stream@4.8.1(pg@8.14.1):
+    dependencies:
+      pg: 8.14.1
+      pg-cursor: 2.14.6(pg@8.14.1)
 
   pg-types@2.2.0:
     dependencies:
@@ -13103,6 +13281,8 @@ snapshots:
 
   space-separated-tokens@2.0.2: {}
 
+  spex@3.4.0: {}
+
   split2@4.2.0: {}
 
   sprintf-js@1.1.3: {}
@@ -13312,6 +13492,13 @@ snapshots:
   tslib@1.14.1: {}
 
   tslib@2.8.1: {}
+
+  tsx@4.19.4:
+    dependencies:
+      esbuild: 0.25.2
+      get-tsconfig: 4.10.0
+    optionalDependencies:
+      fsevents: 2.3.3
 
   tw-animate-css@1.2.5: {}
 

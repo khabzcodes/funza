@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "dev:mastra": "mastra dev",
+    "dev:chunk": "tsx --env-file=.env.development ./src/mastra/rag/chunk.ts",
     "build": "next build",
     "build:mastra": "mastra build",
     "start": "next start",
@@ -17,6 +18,7 @@
   },
   "dependencies": {
     "@ai-sdk/openai": "^1.3.21",
+    "@electric-sql/pglite": "^0.3.0",
     "@hono/zod-validator": "^0.5.0",
     "@hookform/resolvers": "^5.0.1",
     "@langchain/community": "^0.3.42",
@@ -50,7 +52,10 @@
     "@mastra/libsql": "^0.0.1",
     "@mastra/memory": "^0.3.1",
     "@mastra/voice-openai-realtime": "^0.2.1",
+    "@mastra/pg": "^0.3.1",
+    "@mastra/rag": "^0.1.20",
     "@tanstack/react-query": "^5.75.1",
+    "ai": "4.3.13",
     "better-auth": "^1.2.7",
     "chalk": "^5.4.1",
     "class-variance-authority": "^0.7.1",
@@ -77,6 +82,7 @@
     "sonner": "^2.0.3",
     "tailwind-merge": "^3.2.0",
     "tesseract.js": "^6.0.1",
+    "tsx": "^4.19.4",
     "tw-animate-css": "^1.2.5",
     "vaul": "^1.1.2",
     "zod": "^3.24.3"
