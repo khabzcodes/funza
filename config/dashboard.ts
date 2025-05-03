@@ -9,8 +9,8 @@ export const dashboardConfiguration: DashboardConfiguration = {
       visibleTo: ['learner', 'educator', 'parent'],
     },
     {
-      title: 'Study Plans',
-      href: '/dashboard/study-plans',
+      title: 'Lessons',
+      href: '/dashboard/lessons',
       icon: 'book',
       visibleTo: ['educator'],
     },
