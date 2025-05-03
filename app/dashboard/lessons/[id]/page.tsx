@@ -6,16 +6,27 @@ import { IntroductionCard } from '@/components/lessons/details/introduction-card
 import { SectionCard } from '@/components/lessons/details/section-card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { cn } from '@/lib/utils';
 import { generateAssessment } from '@/rpc/assessments';
 import { getLesson } from '@/rpc/lessons';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { Question } from '@/types/questions';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import React from 'react';
+import { toast } from 'sonner';
 
 export default function LessonPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = React.use(params);
 
+  const queryClient = useQueryClient();
+
   const mutation = useMutation({
     mutationFn: async (id: string) => await generateAssessment(id),
+    onSuccess: response => {
+      toast.success(`Assessment generated: ${response}`);
+      queryClient.invalidateQueries({
+        queryKey: ['lesson', id],
+      });
+    },
     onError: error => {
       console.error('Error fetching lesson:', error);
     },
@@ -37,6 +48,7 @@ export default function LessonPage({ params }: { params: Promise<{ id: string }>
   const introduction = data.introduction as { title: string; description: string };
   const sections = data.sections as { title: string; content: string }[];
   const conclusion = data.conclusion as { content: string };
+  const questions = data.questions as Question[];
 
   return (
     <div className="grid gap-4">
@@ -65,6 +77,23 @@ export default function LessonPage({ params }: { params: Promise<{ id: string }>
               {mutation.isPending ? 'Generating...' : 'Generate Assessment'}
             </Button>
           </div>
+          {questions?.map((question, idx) => (
+            <div key={idx} className="w-full p-4 my-2 bg-gray-100 rounded-md">
+              <p className="text-sm">
+                {idx + 1}. {question.question}
+              </p>
+              <div className="flex flex-col gap-1 pl-6">
+                {question.options.map(option => (
+                  <div
+                    key={`${question.question}-${option.id}`}
+                    className={cn('text-xs', option.isCorrect && 'text-green-500')}
+                  >
+                    - {option.option}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </TabsContent>
       </Tabs>
     </div>

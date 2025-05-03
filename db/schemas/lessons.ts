@@ -8,6 +8,7 @@ export const lesson = pgTable('lessons', {
   introduction: jsonb('introduction').default({}),
   sections: jsonb('sections').default([]),
   status: text('status').default('pending'),
+  questions: jsonb('questions').default([]),
   conclusion: jsonb('conclusion').default({}),
   createdAt: timestamp('created_at').defaultNow(),
 });

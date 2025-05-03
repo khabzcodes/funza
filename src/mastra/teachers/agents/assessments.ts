@@ -1,10 +1,10 @@
-import { openai } from "@ai-sdk/openai";
-import { Agent } from "@mastra/core/agent";
-import { Memory } from "@mastra/memory";
+import { openai } from '@ai-sdk/openai';
+import { Agent } from '@mastra/core/agent';
+import { Memory } from '@mastra/memory';
 
 export const assessmentGeneratorAgent = new Agent({
-  name: "Assessment Generator Agent",
-  model: openai("gpt-4o-mini"),
+  name: 'Assessment Generator Agent',
+  model: openai('gpt-4o-mini'),
   instructions: `
     You are an Assessment Generator AI.
 
