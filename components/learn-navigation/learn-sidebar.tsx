@@ -3,14 +3,11 @@ import { useSession } from "@/lib/auth-client";
 import { Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar";
 import { Icons } from "../icons";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { SimliAgent } from "./simili-agent";
-import { EyeIcon, EyeOff } from "lucide-react";
-import { Button } from "../ui/button";
 
 export const LearnSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
   const { data, isPending } = useSession();
-  const [isSimliAgentVisible, setIsSimliAgentVisible] = useState(false);
 
   if (isPending || !data?.user) {
     return (

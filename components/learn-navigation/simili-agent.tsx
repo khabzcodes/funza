@@ -2,8 +2,6 @@ import React, { useRef, useState } from "react";
 import { DailyProvider } from "@daily-co/daily-react";
 import DailyIframe, { DailyCall } from "@daily-co/daily-js";
 import { VideoBox } from "./video-box";
-import { cn } from "@/lib/utils";
-import { IconSparkleLoader } from "./icon-sparkle-loader";
 import { Button } from "../ui/button";
 import { Icons } from "../icons";
 

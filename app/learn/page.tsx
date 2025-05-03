@@ -1,12 +1,35 @@
+'use client';
+import { PageHeader } from "@/components/layout/page-header";
+import { learnerColumns } from "@/components/lessons/lesson-table/columns";
+import { LessonDataTable } from "@/components/lessons/lesson-table/table";
+import { getLessons } from "@/rpc/lessons";
+import { useQuery } from "@tanstack/react-query";
+
 export default function LearnPage() {
+  const { isLoading, data } = useQuery({
+    queryKey: ['lessons'],
+    queryFn: async () => getLessons(),
+  });
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <h1 className="text-2xl font-bold">Learn</h1>
-        <p className="text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          This is the dashboard page.
-        </p>
-      </main>
+    <div className="flex flex-col gap-6">
+      <PageHeader title="Lessons" description="Choose a lesson." />
+      <div className="flex flex-col gap-2">
+        {isLoading && <p>Loading...</p>}
+        <LessonDataTable
+          columns={learnerColumns}
+          data={
+            data?.map(lesson => ({
+              id: lesson.id,
+              subject: lesson.subject,
+              topic: lesson.topic,
+              grade: lesson.grade || 'N/A', // Add grade property with a default value if missing
+              submittedAssessments: 0,
+              createdAt: lesson.createdAt || '', // Ensure createdAt is a string
+            })) || []
+          }
+        />
+      </div>
     </div>
   );
 }
