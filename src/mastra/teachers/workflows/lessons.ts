@@ -50,7 +50,9 @@ export const sectionsGeneratorStep = new Step({
       [
         {
           role: 'user',
-          content: `Generate sections for a lesson with the title "${title}" and description "${description}".`,
+          content: `
+            Generate sections for a lesson with the title "${title}" and description "${description}".
+          `,
         }
       ],
       {

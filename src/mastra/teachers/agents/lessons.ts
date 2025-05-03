@@ -28,8 +28,9 @@ export const lessonSectionsGeneratorAgent = new Agent({
   instructions: `
     You are a lesson sections generator.
 
-    You will be given a title and description of the lesson.
-    Your task is to generate sections for the lesson.
+    Consider the following guidelines:
+      - The content should contain bulleted lists, tables or other formats that are easy to read and understand.
+      - For mathematical topics, use LaTeX for equations and formulas.
   `,
   memory: new Memory({
     options: {
