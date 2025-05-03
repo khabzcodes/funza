@@ -1,13 +1,12 @@
 import { createLogger, Mastra } from "@mastra/core"
 import { LibSQLStore } from "@mastra/libsql"
 import { lessonGeneratorWorkflow } from "./teachers/workflows"
-import { lessonIntroductionGeneratorAgent, lessonSectionsGeneratorAgent } from "./teachers/agents"
+import { assessmentGeneratorWorkflow } from "./teachers/workflows/assessmemnts"
 
 export const mastra = new Mastra({
-  agents: { lessonIntroductionGeneratorAgent, lessonSectionsGeneratorAgent },
-  workflows: { lessonGeneratorWorkflow },
+  workflows: { lessonGeneratorWorkflow, assessmentGeneratorWorkflow },
   storage: new LibSQLStore({
-    url: ":memory:",
+    url: "file:./mastra.db",
   }),
   logger: createLogger({
     name: 'Mastra',
