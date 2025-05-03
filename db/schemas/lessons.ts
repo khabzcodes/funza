@@ -7,6 +7,7 @@ export const lesson = pgTable('lessons', {
   grade: text('grade').notNull(),
   introduction: jsonb('introduction').default({}),
   sections: jsonb('sections').default([]),
+  status: text('status').default('pending'),
   conclusion: jsonb('conclusion').default({}),
   createdAt: timestamp('created_at').defaultNow(),
 });

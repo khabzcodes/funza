@@ -24,10 +24,14 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
+import { createLesson } from '@/rpc/lessons';
 import { CreateLessonFormInput, createLessonSchema } from '@/validations/lesson';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 type CreateLessonDialogProps = {
   open: boolean;
@@ -36,14 +40,23 @@ type CreateLessonDialogProps = {
 
 export const CreateLessonDialog = ({ open, onOpenChange }: CreateLessonDialogProps) => {
   const [files, setFiles] = useState<File[]>([]);
+  const router = useRouter();
+  const mutation = useMutation({
+    mutationFn: async (data: CreateLessonFormInput) => await createLesson(data),
+    onSuccess: response => {
+      router.push(`/dashboard/lessons/${response.id}`);
+    },
+    onError: error => {
+      toast.error(`Error creating lesson: ${error.message}`);
+    },
+  });
 
   const form = useForm<CreateLessonFormInput>({
     resolver: zodResolver(createLessonSchema),
   });
 
   const handleSubmit = async (data: CreateLessonFormInput) => {
-    // Handle form submission logic here
-    console.log(data);
+    await mutation.mutateAsync(data);
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -210,7 +223,10 @@ export const CreateLessonDialog = ({ open, onOpenChange }: CreateLessonDialogPro
                 </FormItem>
               )}
             />
-            <Button type="submit">Continue</Button>
+            <Button type="submit" disabled={mutation.isPending}>
+              Continue
+              {mutation.isPending && <Icons.spinner className="ml-2 h-4 w-4 animate-spin" />}
+            </Button>
           </form>
         </Form>
       </DialogContent>

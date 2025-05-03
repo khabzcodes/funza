@@ -29,6 +29,13 @@
       "when": 1746269776929,
       "tag": "0003_lessons",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1746278555275,
+      "tag": "0004_add-lesson-status",
+      "breakpoints": true
     }
   ]
 }
