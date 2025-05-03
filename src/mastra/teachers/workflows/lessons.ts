@@ -1,7 +1,7 @@
 import { Step, Workflow } from '@mastra/core/workflows';
 import { z } from 'zod';
 import { lessonConclusionGeneratorAgent, lessonIntroductionGeneratorAgent, lessonSectionsGeneratorAgent } from '../agents';
-import { lessionSectionsSchema, lessonConclusionSchema, lessonInputSchema, lessonIntroductionSchema } from '../schemas/lesson';
+import { lessionSectionsSchema, lessonConclusionSchema, lessonInputSchema, lessonIntroductionSchema } from '../schemas/lessons';
 
 export const introductionGeneratorStep = new Step({
   id: "introduction_generator",
@@ -108,7 +108,7 @@ export const conclusionGeneratorStep = new Step({
 
 
 export const lessonGeneratorWorkflow = new Workflow({
-  name: 'lesson-generator',
+  name: 'Lesson Generator Workflow',
   triggerSchema: lessonInputSchema
 })
   .step(introductionGeneratorStep)

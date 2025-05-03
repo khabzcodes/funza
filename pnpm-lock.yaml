@@ -29,6 +29,9 @@ importers:
       '@mastra/memory':
         specifier: ^0.3.1
         version: 0.3.1(@hono/zod-validator@0.5.0(hono@4.7.8)(zod@3.24.3))(openapi-types@12.1.3)(react@19.1.0)
+      '@mastra/voice-openai-realtime':
+        specifier: ^0.2.1
+        version: 0.2.1(@hono/zod-validator@0.5.0(hono@4.7.8)(zod@3.24.3))(openapi-types@12.1.3)(react@19.1.0)(zod@3.24.3)
       '@radix-ui/react-accordion':
         specifier: ^1.2.7
         version: 1.2.7(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -1618,6 +1621,9 @@ packages:
     resolution: {integrity: sha512-Iiccd/fncA0eIpcw9+xd+6gP0Y6yJxVMFaUPABbCuR2WDOasEBr4FKsh4Qi1wT2nX87KBfx7ry25sNY5aoCzmQ==}
     peerDependencies:
       '@mastra/core': ^0.9.1
+
+  '@mastra/voice-openai-realtime@0.2.1':
+    resolution: {integrity: sha512-HFBP941uuy7t7hOIjVkCoZGew7YyKW6MJ3Qvh8EqdAzuHFyAnF0oZy7vvrkgwBmuWKMGY7P2JKOfY0YiPvVPrg==}
 
   '@napi-rs/wasm-runtime@0.2.9':
     resolution: {integrity: sha512-OKRBiajrrxB9ATokgEQoG87Z25c67pCpYcCwmXYX8PBftC9pBfN18gnm/fh1wurSLEKIAt+QRFLFCQISrb66Jg==}
@@ -5559,6 +5565,10 @@ packages:
     resolution: {integrity: sha512-NeaCX6WW2L8cRCSqy3bInlo5ojjQqu2fD3D+9W5qb5irwxhEyWKXeH2vZ8W9r6VxaMPUan+4/7NDwZMtouZxEw==}
     os: [win32, darwin, linux]
 
+  openai-realtime-api@1.0.7:
+    resolution: {integrity: sha512-mA5Ha0Ut1A2QB/2rNO0jedTeC/PJ6EJndXEv5N8I8SQKgpRAqhT0z2sshYAZMNMXN0gOJrVdykdVa+p1pXsAag==}
+    engines: {node: '>=18'}
+
   openai@4.97.0:
     resolution: {integrity: sha512-LRoiy0zvEf819ZUEJhgfV8PfsE8G5WpQi4AwA1uCV8SKvvtXQkoWUFkepD6plqyJQRghy2+AEPQ07FrJFKHZ9Q==}
     hasBin: true
@@ -8031,6 +8041,33 @@ snapshots:
   '@mastra/server@2.0.1(@mastra/core@0.9.1(@hono/zod-validator@0.5.0(hono@4.7.8)(zod@3.24.3))(openapi-types@12.1.3)(react@19.1.0)(zod@3.24.3))':
     dependencies:
       '@mastra/core': 0.9.1(@hono/zod-validator@0.5.0(hono@4.7.8)(zod@3.24.3))(openapi-types@12.1.3)(react@19.1.0)(zod@3.24.3)
+
+  '@mastra/voice-openai-realtime@0.2.1(@hono/zod-validator@0.5.0(hono@4.7.8)(zod@3.24.3))(openapi-types@12.1.3)(react@19.1.0)(zod@3.24.3)':
+    dependencies:
+      '@mastra/core': 0.9.1(@hono/zod-validator@0.5.0(hono@4.7.8)(zod@3.24.3))(openapi-types@12.1.3)(react@19.1.0)(zod@3.24.3)
+      openai-realtime-api: 1.0.7
+      ws: 8.18.1
+      zod-to-json-schema: 3.24.5(zod@3.24.3)
+    transitivePeerDependencies:
+      - '@hono/arktype-validator'
+      - '@hono/effect-validator'
+      - '@hono/typebox-validator'
+      - '@hono/valibot-validator'
+      - '@hono/zod-validator'
+      - '@sinclair/typebox'
+      - '@valibot/to-json-schema'
+      - arktype
+      - aws-crt
+      - bufferutil
+      - effect
+      - encoding
+      - openapi-types
+      - react
+      - supports-color
+      - utf-8-validate
+      - valibot
+      - zod
+      - zod-openapi
 
   '@napi-rs/wasm-runtime@0.2.9':
     dependencies:
@@ -12375,6 +12412,14 @@ snapshots:
       global-agent: 3.0.0
       onnxruntime-common: 1.21.0
       tar: 7.4.3
+
+  openai-realtime-api@1.0.7:
+    dependencies:
+      nanoid: 5.1.5
+      ws: 8.18.1
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
 
   openai@4.97.0(ws@8.18.1)(zod@3.24.3):
     dependencies:
