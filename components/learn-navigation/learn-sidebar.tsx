@@ -3,9 +3,14 @@ import { useSession } from "@/lib/auth-client";
 import { Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar";
 import { Icons } from "../icons";
 import Link from "next/link";
+import React, { useState } from "react";
+import { SimliAgent } from "./simili-agent";
+import { EyeIcon, EyeOff } from "lucide-react";
+import { Button } from "../ui/button";
 
 export const LearnSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
   const { data, isPending } = useSession();
+  const [isSimliAgentVisible, setIsSimliAgentVisible] = useState(false);
 
   if (isPending || !data?.user) {
     return (
@@ -32,8 +37,16 @@ export const LearnSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>)
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        
+        <div className="flex flex-col grow w-full">
+          <div className="flex flex-col p-4 grow">
+            <SimliAgent
+              user={data.user}
+              onStart={() => console.log("Tutor started")}
+              onClose={() => console.log("Tutor closed")}
+            />
+          </div>
+        </div>
       </SidebarContent>
     </Sidebar>
-  )
-}
+  );
+};
