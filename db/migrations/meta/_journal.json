@@ -22,6 +22,13 @@
       "when": 1746139443389,
       "tag": "0002_naive_boomerang",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1746269776929,
+      "tag": "0003_lessons",
+      "breakpoints": true
     }
   ]
 }
