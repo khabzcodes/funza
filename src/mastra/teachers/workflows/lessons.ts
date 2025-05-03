@@ -4,7 +4,7 @@ import { lessonConclusionGeneratorAgent, lessonIntroductionGeneratorAgent, lesso
 import { lessionSectionsSchema, lessonConclusionSchema, lessonInputSchema, lessonIntroductionSchema } from '../schemas/lesson';
 
 export const introductionGeneratorStep = new Step({
-  id: "introduction-generator",
+  id: "introduction_generator",
   description: "Generates an introduction for the lesson",
   inputSchema: lessonInputSchema,
   outputSchema: lessonIntroductionSchema,
@@ -33,7 +33,7 @@ export const introductionGeneratorStep = new Step({
 })
 
 export const sectionsGeneratorStep = new Step({
-  id: "sections-generator",
+  id: "sections_generator",
   description: "Generates sections for the lesson",
   inputSchema: lessonInputSchema,
   outputSchema: lessionSectionsSchema,
@@ -62,7 +62,7 @@ export const sectionsGeneratorStep = new Step({
 })
 
 export const conclusionGeneratorStep = new Step({
-  id: "conclusion-generator",
+  id: "conclusion_generator",
   description: "Generates a conclusion for the lesson",
   inputSchema: lessonInputSchema,
   outputSchema: z.object({
