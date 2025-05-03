@@ -7,7 +7,7 @@ export const createLessonSchema = z.object({
   topic: z.string().min(1, {
     message: 'Topic is required.',
   }),
-  grade: z.enum(['10', '11', '12']),
+  grade: z.enum(['Grade 10', 'Grade 11', 'Grade 12']),
   objective: z.string({
     message: 'Objective is required.',
   }),

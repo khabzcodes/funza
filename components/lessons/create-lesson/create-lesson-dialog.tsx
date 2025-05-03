@@ -120,9 +120,9 @@ export const CreateLessonDialog = ({ open, onOpenChange }: CreateLessonDialogPro
                         <SelectValue placeholder="Select a grade" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="10">Grade 10</SelectItem>
-                        <SelectItem value="11">Grade 11</SelectItem>
-                        <SelectItem value="12">Grade 12</SelectItem>
+                        <SelectItem value="Grade 10">Grade 10</SelectItem>
+                        <SelectItem value="Grade 11">Grade 11</SelectItem>
+                        <SelectItem value="Grade 12">Grade 12</SelectItem>
                       </SelectContent>
                     </Select>
                   </FormItem>
