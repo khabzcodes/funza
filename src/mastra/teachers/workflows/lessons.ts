@@ -38,7 +38,7 @@ export const sectionsGeneratorStep = new Step({
   inputSchema: lessonInputSchema,
   outputSchema: lessionSectionsSchema,
   execute: async ({ context }) => {
-    const introductionData = context?.getStepResult<z.infer<typeof lessonIntroductionSchema>>('introduction-generator');
+    const introductionData = context?.getStepResult<z.infer<typeof lessonIntroductionSchema>>('introduction_generator');
 
     if (!introductionData) {
       throw new Error('Introduction data is not available');
@@ -71,8 +71,8 @@ export const conclusionGeneratorStep = new Step({
     conclusion: lessonConclusionSchema
   }),
   execute: async ({ context }) => {
-    const introductionData = context?.getStepResult<z.infer<typeof lessonIntroductionSchema>>('introduction-generator');
-    const sectionsData = context?.getStepResult<z.infer<typeof lessionSectionsSchema>>('sections-generator');
+    const introductionData = context?.getStepResult<z.infer<typeof lessonIntroductionSchema>>('introduction_generator');
+    const sectionsData = context?.getStepResult<z.infer<typeof lessionSectionsSchema>>('sections_generator');
 
     if (!introductionData || !sectionsData) {
       throw new Error('One or more step results are not available');
