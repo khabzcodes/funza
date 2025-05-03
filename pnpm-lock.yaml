@@ -122,12 +122,12 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.75.1
         version: 5.75.1(react@19.1.0)
-      ai:
-        specifier: 4.3.13
-        version: 4.3.13(react@19.1.0)(zod@3.24.3)
       '@tanstack/react-table':
         specifier: ^8.21.3
         version: 8.21.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      ai:
+        specifier: 4.3.13
+        version: 4.3.13(react@19.1.0)(zod@3.24.3)
       better-auth:
         specifier: ^1.2.7
         version: 1.2.7
@@ -4906,6 +4906,9 @@ packages:
   hono@4.7.8:
     resolution: {integrity: sha512-PCibtFdxa7/Ldud9yddl1G81GjYaeMYYTq4ywSaNsYbB1Lug4mwtOMJf2WXykL0pntYwmpRJeOI3NmoDgD+Jxw==}
     engines: {node: '>=16.9.0'}
+
+  html-entities@2.6.0:
+    resolution: {integrity: sha512-kig+rMn/QOVRvr7c86gQ8lWXq+Hkv6CbAH1hLu+RG338StTpE8Z0b44SDVaqVu7HGKf27frdmUYEs9hTUX/cLQ==}
 
   html-url-attributes@3.0.1:
     resolution: {integrity: sha512-ol6UPyBWqsrO6EJySPz2O7ZSr856WDrEzM5zMqp+FJJLGMW35cLYmmZnl0vztAZxRUoNZJFTCohfjuIJ8I4QBQ==}
@@ -12076,6 +12079,8 @@ snapshots:
       zod: 3.24.3
 
   hono@4.7.8: {}
+
+  html-entities@2.6.0: {}
 
   html-url-attributes@3.0.1: {}
 
