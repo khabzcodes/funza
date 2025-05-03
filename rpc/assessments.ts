@@ -8,7 +8,7 @@ export const generateAssessment = async (lessonId: string) => {
     const error = await response.json();
     throw new Error(`Error generating assessment: ${error}`);
   }
-  const { runId } = await response.json();
+  const { message } = await response.json();
 
-  return runId;
+  return message;
 };

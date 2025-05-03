@@ -1,0 +1,1 @@
+ALTER TABLE "lessons" ADD COLUMN "questions" jsonb DEFAULT '[]'::jsonb;

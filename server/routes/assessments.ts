@@ -1,5 +1,7 @@
 import { db } from '@/db';
+import { lesson } from '@/db/schemas/lessons';
 import { createLogger } from '@/lib/logger';
+import { AssessmentResults } from '@/types/questions';
 import { eq } from 'drizzle-orm';
 import { Hono } from 'hono';
 
@@ -61,12 +63,20 @@ export const assessmentRoutes = new Hono().post('/generate/:id', async c => {
       return c.json({ message: 'Failed to start workflow run' }, 500);
     }
 
-    const { response, results } = await runWorkflowResponse.json();
+    const { results } = (await runWorkflowResponse.json()) as AssessmentResults;
 
-    logger.info('Response', { response });
-    logger.info('Results', { results });
+    const updateLesson = await db
+      .update(lesson)
+      .set({ questions: results.assessment_conclusion_generator.output.questions })
+      .where(eq(lesson.id, id))
+      .returning();
 
-    return c.json({ runId }, 200);
+    if (!updateLesson) {
+      logger.error('Error updating lesson with generated questions', { id });
+      return c.json({ message: 'Failed to update lesson with generated questions' }, 500);
+    }
+
+    return c.json({ message: 'Assessment Successfully generate' }, 200);
   } catch (error) {
     logger.error('Error generating assessment', error);
     return c.json({ error: 'Error generating assessment' }, 500);

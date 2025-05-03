@@ -30,6 +30,7 @@ export const assessmentQuestionGeneratorStep = new Step({
         },
       ],
       {
+        temperature: 0.7,
         output: assessmentAssessmentSchema,
       }
     );
