@@ -7,6 +7,12 @@ import { openai } from "@ai-sdk/openai";
 
 const chunk = async () => {
   const pgVector = new PgVector(process.env.POSTGRES_CONNECTION_STRING!);
+  // try {
+  //   await pgVector.deleteIndex("embeddings");
+  //   return;
+  // } catch {
+  //   return;
+  // }
   try {
     await pgVector.getIndexInfo("embeddings")
   } catch {

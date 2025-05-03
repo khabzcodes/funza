@@ -1,9 +1,12 @@
 import { z } from "zod";
-import { lessionSectionsSchema, lessonConclusionSchema, lessonIntroductionSchema } from "./lessons";
+import { lessonConclusionSchema, lessonIntroductionSchema } from "./lessons";
 
 export const assessmentInputSchema = z.object({
   introduction: lessonIntroductionSchema,
-  sections: lessionSectionsSchema,
+  sections: z.array(z.object({
+    title: z.string().describe('The title of the section'),
+    content: z.string().describe('The content of the section, in markdown format'),
+  }).describe("The section of the lesson")).describe('The sections of the lesson'),
   conclusion: lessonConclusionSchema
 })
 
