@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Space_Mono } from 'next/font/google';
 import './globals.css';
-import { Toaster } from '@/components/ui/sonner';
+import { Providers } from './providers';
 
 const readex = Space_Mono({
   weight: ['400', '700'],
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${readex.className} antialiased`}>
-        {children} <Toaster richColors={true} position="top-right" />
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
