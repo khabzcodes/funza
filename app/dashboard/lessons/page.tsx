@@ -26,7 +26,6 @@ export default function LessonsPage() {
       </PageHeader>
       <div className="flex flex-col gap-2">
         {isLoading && <p>Loading...</p>}
-        {!isLoading && data?.length === 0 && <p>No lessons found.</p>}
         <LessonDataTable
           columns={columns}
           data={
