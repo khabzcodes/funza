@@ -4,6 +4,7 @@ import { admin as adminPlugin } from 'better-auth/plugins/admin';
 import { db } from '@/db';
 import * as schema from '@/db/schemas/auth-schema';
 import { ac, user, admin, learner, educator, parent } from '@/lib/permissions';
+import { headers } from 'next/headers';
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
@@ -41,3 +42,9 @@ export const auth = betterAuth({
     }),
   ],
 });
+
+export const getServerSession = async () => {
+  return await auth.api.getSession({
+    headers: await headers(),
+  });
+};
