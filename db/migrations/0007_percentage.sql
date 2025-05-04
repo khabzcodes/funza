@@ -1,0 +1,1 @@
+ALTER TABLE "assessment_question_answers" ADD COLUMN "percentage" text;

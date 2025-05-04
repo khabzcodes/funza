@@ -1,4 +1,6 @@
+import { relations } from 'drizzle-orm';
 import { jsonb, pgTable, text, timestamp } from 'drizzle-orm/pg-core';
+import { assessmentQuestionAnswers } from './assessment-question-answers';
 
 export const lesson = pgTable('lessons', {
   id: text('id').primaryKey(),
@@ -12,3 +14,7 @@ export const lesson = pgTable('lessons', {
   conclusion: jsonb('conclusion').default({}),
   createdAt: timestamp('created_at').defaultNow(),
 });
+
+export const lessonRelations = relations(lesson, ({ many }) => ({
+  assessmentsSubmissions: many(assessmentQuestionAnswers),
+}));

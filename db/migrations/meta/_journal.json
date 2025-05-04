@@ -43,6 +43,20 @@
       "when": 1746305354701,
       "tag": "0005_assessment-questions",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1746313157449,
+      "tag": "0006_assessment-answers",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1746313431630,
+      "tag": "0007_percentage",
+      "breakpoints": true
     }
   ]
 }
