@@ -26,5 +26,11 @@ export const dashboardConfiguration: DashboardConfiguration = {
       icon: 'clipboard',
       visibleTo: ['learner', 'educator'],
     },
+    {
+      title: 'Insights',
+      href: '/dashboard/insights',
+      icon: 'clipboard',
+      visibleTo: ['educator'],
+    },
   ],
 };
