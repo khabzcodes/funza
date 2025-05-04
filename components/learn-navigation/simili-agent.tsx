@@ -23,7 +23,7 @@ export const SimliAgent: React.FC<SimliAgentProps> = ({ user, onStart, onClose }
   const [callObject, setCallObject] = useState<DailyCall | null>(null);
   const myCallObjRef = useRef<DailyCall | null>(null);
   const [chatbotId, setChatbotId] = useState<string | null>(null);
-  const { introduction, conclusion } = useLesson()
+  const { title } = useLesson()
 
   const handleJoinRoom = async () => {
     setIsLoading(true);
@@ -38,11 +38,14 @@ export const SimliAgent: React.FC<SimliAgentProps> = ({ user, onStart, onClose }
         faceId: "e279cc3c-cbc4-47af-8d45-eb34eb443f3e",
         voiceId: "79f8b5fb-2cc8-479a-80df-29f7a7cf1a3e",
         firstMessage:  `
-          You are a tutor can you help me with the following lesson?
-          ${introduction}
-          ${conclusion}
+          Hi , I am your personal tutor. I will help you with
+          ${title}
         `,
-        systemPrompt: "Act as a helpful tutor",
+        systemPrompt: `
+          Act as a helpful tutor.
+          When the user asks a question, do not answer it directly but provide hints and ask follow-up questions to guide the user to the answer.
+          Also, ask questions related to the topic of the lesson.
+        `,
       }),
     });
 
@@ -70,6 +73,7 @@ export const SimliAgent: React.FC<SimliAgentProps> = ({ user, onStart, onClose }
       let chatbotFound: boolean = false;
 
       const participants = myCallObjRef.current.participants();
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       for (const [_, participant] of Object.entries(participants)) {
         if (participant.user_name === "Chatbot") {
           setChatbotId(participant.session_id);

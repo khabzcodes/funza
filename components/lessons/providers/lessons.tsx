@@ -3,10 +3,8 @@
 import * as React from 'react';
 
 type LessonContextProps = {
-  introduction?: string | null;
-  conclusion?: string | null;
-  setIntoduction: (introduction: string) => void;
-  setConclusion: (conclusion: string) => void;
+  title?: string | undefined | null;
+  setTitle: (title: string) => void;
 };
 
 const LessonContext = React.createContext<LessonContextProps | null>(null);
@@ -21,19 +19,15 @@ export function useLesson() {
 }
 
 export function LessionProvider({
-  introduction,
-  conclusion,
-  setIntoduction,
-  setConclusion,
+  title,
+  setTitle,
   children
 }: React.ComponentProps<'div'> & {
-  introduction?: string | null;
-  conclusion?: string | null;
-  setIntoduction: (introduction: string) => void;
-  setConclusion: (conclusion: string) => void;
+  title?: string | undefined | null;
+  setTitle: (title: string) => void;
 }) {
   return (
-    <LessonContext.Provider value={{ introduction, conclusion, setIntoduction, setConclusion }}>
+    <LessonContext.Provider value={{ title, setTitle }}>
       {children}
     </LessonContext.Provider>
   );

@@ -11,11 +11,10 @@ export default function LearnLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [introduction, setIntoduction] = React.useState<string | null>(null);
-  const [conclusion, setConclusion] = React.useState<string | null>(null);
+  const [title, setTitle] = React.useState<string | null>(null);
 
   return (
-    <LessionProvider introduction={introduction} conclusion={conclusion} setIntoduction={setIntoduction} setConclusion={setConclusion}>
+    <LessionProvider title={title} setTitle={setTitle}>
       <SidebarProvider style={{ "--sidebar-width": "24rem" } as React.CSSProperties}>
         <LearnSidebar variant="inset" />
         <SidebarInset>

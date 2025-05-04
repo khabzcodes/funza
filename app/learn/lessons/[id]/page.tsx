@@ -12,7 +12,7 @@ import { redirect } from 'next/navigation';
 import React, { useEffect } from 'react';
 
 export default function LessonPage({ params }: { params: Promise<{ id: string }> }) {
-  const { setConclusion, setIntoduction } = useLesson();
+  const { setTitle } = useLesson();
   const { id } = React.use(params);
 
   const { data, isPending } = useQuery({
@@ -23,11 +23,9 @@ export default function LessonPage({ params }: { params: Promise<{ id: string }>
   useEffect(() => {
     if (!data) return;
     const introduction = data.introduction as { title: string; description: string };
-    const conclusion = data.conclusion as { content: string };
 
-    setIntoduction(introduction?.description);
-    setConclusion(conclusion.content);
-  }, [data, setIntoduction, setConclusion]);
+    setTitle(introduction?.title);
+  }, [data, setTitle]);
 
   if (isPending || !data) {
     return (
