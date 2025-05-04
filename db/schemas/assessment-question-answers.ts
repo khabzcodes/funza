@@ -1,12 +1,9 @@
 import { jsonb, pgTable, text, timestamp } from 'drizzle-orm/pg-core';
-import { lesson } from './lessons';
 import { user } from './auth-schema';
 
 export const assessmentQuestionAnswers = pgTable('assessment_question_answers', {
   id: text('id').primaryKey(),
-  lessonId: text('lesson_id')
-    .notNull()
-    .references(() => lesson.id),
+  lessonId: text('lesson_id').notNull(),
   answers: jsonb('answers').default([]),
   studentId: text('student_id')
     .notNull()
