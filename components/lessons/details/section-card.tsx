@@ -15,7 +15,7 @@ export const SectionCard = ({ title, content }: SectionCardProps) => {
         <CardTitle className="font-bold">{title}</CardTitle>
       </CardHeader>
       <Separator />
-      <CardContent className="text-sm text-muted-foreground">
+      <CardContent className="text-sm text-muted-foreground prose prose-lg">
         <Markdown remarkPlugins={[remarkGfm]}>{content}</Markdown>
       </CardContent>
     </Card>

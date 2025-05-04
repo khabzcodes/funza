@@ -1,9 +1,11 @@
+'use client';
 import React, { useRef, useState } from "react";
 import { DailyProvider } from "@daily-co/daily-react";
 import DailyIframe, { DailyCall } from "@daily-co/daily-js";
 import { VideoBox } from "./video-box";
 import { Button } from "../ui/button";
 import { Icons } from "../icons";
+import { useLesson } from "../lessons/providers/lessons";
 
 interface SimliAgentProps {
   user: {
@@ -21,6 +23,7 @@ export const SimliAgent: React.FC<SimliAgentProps> = ({ user, onStart, onClose }
   const [callObject, setCallObject] = useState<DailyCall | null>(null);
   const myCallObjRef = useRef<DailyCall | null>(null);
   const [chatbotId, setChatbotId] = useState<string | null>(null);
+  const { introduction, conclusion } = useLesson()
 
   const handleJoinRoom = async () => {
     setIsLoading(true);
@@ -34,7 +37,11 @@ export const SimliAgent: React.FC<SimliAgentProps> = ({ user, onStart, onClose }
         apiKey: SIMLI_API_KEY,
         faceId: "e279cc3c-cbc4-47af-8d45-eb34eb443f3e",
         voiceId: "79f8b5fb-2cc8-479a-80df-29f7a7cf1a3e",
-        firstMessage: "",
+        firstMessage:  `
+          You are a tutor can you help me with the following lesson?
+          ${introduction}
+          ${conclusion}
+        `,
         systemPrompt: "Act as a helpful tutor",
       }),
     });
